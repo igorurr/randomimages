@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import '../App.css';
 
+import { GetPictures } from '../helpers/index';
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -14,16 +16,16 @@ class App extends Component {
   }
 
   increment() {
-    this.setState( (old) => ({
+    this.setState(old => ({
       count: old.count+1
-    }) );
+    }));
   }
 
   decrement() {
     if( this.state.count > 0 )
-      this.setState( (old) => ({
+      this.setState(old => ({
         count: old.count-1
-      }) );
+      }));
   }
 
   render() {
@@ -31,9 +33,7 @@ class App extends Component {
     return (
       <div className="App">
         <content>
-          {[...Array(count).keys()].map( (_,i)=>(
-            <img key={i} src={'https://pp.userapi.com/c830508/v830508998/1b119e/Tu66t9UIoGg.jpg'} />
-          ) )}
+          {GetPictures(count)}
         </content>
         <footer>
           <button onClick={this.decrement} > - </button>
