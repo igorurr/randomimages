@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import '../App.css';
 
-import { GetPictures } from '../helpers/index';
+import { duplicateComponent } from '../helpers/index';
+import { Button, Image } from './index';
 
 class App extends Component {
   constructor(props) {
@@ -33,11 +34,16 @@ class App extends Component {
     return (
       <div className="App">
         <content>
-          {GetPictures(count)}
+          {duplicateComponent(
+            count,
+            i => (
+              <Image key={i} src={'https://pp.userapi.com/c830508/v830508998/1b119e/Tu66t9UIoGg.jpg'} />
+            )
+          )}
         </content>
         <footer>
-          <button onClick={this.decrement} > - </button>
-          <button onClick={this.increment} > + </button>
+          <Button onClick={this.decrement} text={'-'} />
+          <Button onClick={this.increment} text={'+'} />
         </footer>
       </div>
     );
